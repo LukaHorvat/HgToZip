@@ -53,6 +53,7 @@ app.post("/prepare/", function (req, res) {
 	], function (err, results) {
 		if (err !== null) {
 			res.end("error exec");
+			console.log(err);
 			return;
 		}
 		res.end("/getzip/" + name);
