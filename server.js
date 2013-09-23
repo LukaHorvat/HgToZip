@@ -46,7 +46,7 @@ app.post("/prepare/", function (req, res) {
 	}
 	name = "./" + name;
 	async.series([
-		async.apply(exec, "cd repos"),
+		async.apply(exec, "cd /projects/HgToZip/repos"),
 		async.apply(exec, "hg clone " + repo),
 		async.apply(exec, "zip " + name),
 		async.apply(exec, "rm -rF " + name)
@@ -72,7 +72,7 @@ app.get("/getzip/:name", function (req, res) {
 	var file = req.params.name + ".zip";
 	res.download("repos/" + file, file, function (err) {
 		async.series([
-			async.apply(exec, "cd repos"),
+			async.apply(exec, "cd /projects/HgToZip/repos"),
 			async.apply(exec, "rm ./" + file)
 		], function (err, results) {
 		});
