@@ -1,0 +1,34 @@
+body {
+  background-color: #ddd;
+  font-family: "Open Sans", sans-serif;
+  background: url("bg.png");
+}
+#centerdiv {
+  height: 150px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#hginput {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 40px;
+  width: 796px;
+  padding: 0px;
+}
+#hgsubmit {
+  height: 60px;
+  width: 800px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+}
+#hglabel {
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  margin: 0px;
+  margin-bottom: 5px;
+}

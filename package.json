@@ -1,0 +1,18 @@
+{
+  "name": "HgToZip",
+  "version": "0.0.0",
+  "description": "Small web app for online hg checkouts",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  	"express"	: "*",
+  	"jade"		: "*",
+  	"stylus"	: "*",
+  	"async"		: "*"
+  },
+  "repository": "",
+  "author": "Luka Horvat",
+  "license": "BSD"
+}
