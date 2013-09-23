@@ -54,6 +54,7 @@ app.post("/prepare/", function (req, res) {
 		if (err !== null) {
 			res.end("error exec");
 			console.log(err);
+			console.log(results);
 			return;
 		}
 		res.end("/getzip/" + name);
@@ -75,6 +76,8 @@ app.get("/getzip/:name", function (req, res) {
 			async.apply(exec, "cd /projects/HgToZip/repos"),
 			async.apply(exec, "rm ./" + file)
 		], function (err, results) {
+			console.log(err);
+			console.log(results);
 		});
 	});
 });
