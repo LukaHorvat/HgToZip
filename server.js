@@ -32,7 +32,7 @@ function executeCommands(list, callback) {
 	exec(list[0], function (err, out, errout) {
 		console.log(list[0] + " out: " + out);
 		if (err === null) {
-			executeCommands(list.slice(1));
+			executeCommands(list.slice(1), callback);
 		} else {
 			console.log(list[0] + " error: " + err);
 			console.log(errout);
@@ -61,8 +61,9 @@ app.post("/prepare/", function (req, res) {
 	name = "./" + name;
 	executeCommands([
 		"cd /projects/HgToZip/repos",
+		"pwd",
 		"hg clone " + repo,
-		"zip " + name + " " + name,
+		"zip " + name + ".zip " + name,
 		"rm -rf " + name
 	], function (err) {
 		if (err !== null) {
