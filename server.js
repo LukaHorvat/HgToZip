@@ -66,7 +66,7 @@ app.post("/prepare/", function (req, res) {
 		"cd /projects/HgToZip/repos/",
 		"pwd",
 		"hg clone " + repo,
-		"zip -r" + name + ".zip " + name,
+		"zip -r " + name + ".zip " + name,
 		"rm -rf " + name
 	], function (err) {
 		if (err !== null) {
