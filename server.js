@@ -1,7 +1,6 @@
 var express = require("express");
 var app = express();
 var stylus = require("stylus");
-var async = require("async");
 var exec = require('child_process').exec;
 
 function compile(str, path) {

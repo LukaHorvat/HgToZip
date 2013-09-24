@@ -1,6 +1,7 @@
 doctype 5
 html(lang="en")
 	head
+		title Hg to Zip
 		link(rel="stylesheet", href="/global.css")
 		link(href="http://fonts.googleapis.com/css?family=Open+Sans:400,300", rel="stylesheet" type="text/css")
 		script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js") 
@@ -22,10 +23,12 @@ html(lang="en")
 				return { width : e[ a+'Width' ] , height : e[ a+'Height' ] };
 			}
 			function submit() {
+				$("#hgsubmit")[0].disabled = true;
 				$.post("/prepare/", {
 					repo: $("#hginput")[0].value
 				}, function (res) {
 					console.log(res);
+					$("#hgsubmit")[0].disabled = false;
 					window.location.href = res;
 				});
 			}
