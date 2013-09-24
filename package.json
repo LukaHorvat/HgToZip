@@ -9,8 +9,7 @@
   "dependencies": {
   	"express"	: "*",
   	"jade"		: "*",
-  	"stylus"	: "*",
-  	"async"		: "*"
+  	"stylus"	: "*"
   },
   "repository": "",
   "author": "Luka Horvat",

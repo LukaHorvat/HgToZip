@@ -27,6 +27,20 @@ app.get("/", function (req, res) {
 	res.render("index");
 });
 
+function executeCommands(list, callback) {
+	if (list.length === 0) callback(null);
+	exec(list[0], function (err, out, errout) {
+		console.log(list[0] + " out: " + out);
+		if (err === null) {
+			executeCommands(list.slice(1));
+		} else {
+			console.log(list[0] + " error: " + err);
+			console.log(errout);
+			callback(err);
+		}
+	});
+}
+
 app.post("/prepare/", function (req, res) {
 	var repo = req.body.repo;
 	var split = repo.split("/");
@@ -45,16 +59,14 @@ app.post("/prepare/", function (req, res) {
 		return;
 	}
 	name = "./" + name;
-	async.series([
-		async.apply(exec, "cd /projects/HgToZip/repos"),
-		async.apply(exec, "hg clone " + repo),
-		async.apply(exec, "zip " + name),
-		async.apply(exec, "rm -rF " + name)
-	], function (err, results) {
+	executeCommands([
+		"cd /projects/HgToZip/repos",
+		"hg clone " + repo,
+		"zip " + name + " " + name,
+		"rm -rf " + name
+	], function (err) {
 		if (err !== null) {
 			res.end("error exec");
-			console.log(err);
-			console.log(results);
 			return;
 		}
 		res.end("/getzip/" + name);
@@ -72,12 +84,10 @@ app.get("/getzip/:name", function (req, res) {
 	}
 	var file = req.params.name + ".zip";
 	res.download("repos/" + file, file, function (err) {
-		async.series([
-			async.apply(exec, "cd /projects/HgToZip/repos"),
-			async.apply(exec, "rm ./" + file)
-		], function (err, results) {
-			console.log(err);
-			console.log(results);
+		executeCommands([
+			"cd /projects/HgToZip/repos",
+			"rm ./" + file
+		], function (err) {
 		});
 	});
 });
