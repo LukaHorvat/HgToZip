@@ -28,7 +28,10 @@ app.get("/", function (req, res) {
 });
 
 function executeCommands(list, callback) {
-	if (list.length === 0) callback(null);
+	if (list.length === 0) {
+		callback(null);
+		return;
+	}
 	exec(list[0], { cwd: "./repos/" }, function (err, out, errout) {
 		console.log(list[0] + " out: " + out);
 		if (err === null) {
