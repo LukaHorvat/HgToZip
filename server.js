@@ -29,7 +29,7 @@ app.get("/", function (req, res) {
 
 function executeCommands(list, callback) {
 	if (list.length === 0) callback(null);
-	exec(list[0], function (err, out, errout) {
+	exec(list[0], { cwd: "./repos/", function (err, out, errout) {
 		console.log(list[0] + " out: " + out);
 		if (err === null) {
 			executeCommands(list.slice(1), callback);
@@ -60,7 +60,7 @@ app.post("/prepare/", function (req, res) {
 	}
 	name = "./" + name;
 	executeCommands([
-		"cd /projects/HgToZip/repos",
+		"cd /projects/HgToZip/repos/",
 		"pwd",
 		"hg clone " + repo,
 		"zip " + name + ".zip " + name,
@@ -86,7 +86,7 @@ app.get("/getzip/:name", function (req, res) {
 	var file = req.params.name + ".zip";
 	res.download("repos/" + file, file, function (err) {
 		executeCommands([
-			"cd /projects/HgToZip/repos",
+			"cd /projects/HgToZip/repos/",
 			"rm ./" + file
 		], function (err) {
 		});
