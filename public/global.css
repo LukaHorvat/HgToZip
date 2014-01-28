@@ -32,3 +32,12 @@ body {
   margin: 0px;
   margin-bottom: 5px;
 }
+#title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 100px;
+  color: #333;
+  margin: 0;
+  position: absolute;
+  top: 0px;
+}

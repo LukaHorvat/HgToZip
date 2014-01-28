@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var stylus = require("stylus");
 var exec = require('child_process').exec;
+var os = require("os");
 
 function compile(str, path) {
   return stylus(str)
@@ -95,4 +96,8 @@ app.get("/getzip/:name", function (req, res) {
 	});
 });
 
-app.listen(1000);
+if (os.hostname() != "myfirefly.me") {
+	app.listen(1000);
+} else {
+	module.exports = app;
+}
