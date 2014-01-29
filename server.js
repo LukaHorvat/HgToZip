@@ -61,6 +61,7 @@ app.post("/prepare/", function (req, res) {
 		res.end("error input");
 		return;
 	}
+	var original = name;
 	name = "./" + name;
 	executeCommands([
 		"hg clone " + repo,
@@ -71,7 +72,7 @@ app.post("/prepare/", function (req, res) {
 			res.end("error exec");
 			return;
 		}
-		res.end("getzip/" + name);
+		res.end("getzip/" + original);
 	});
 });
 
@@ -87,7 +88,7 @@ app.get("/getzip/:name", function (req, res) {
 	var file = req.params.name + ".zip";
 	res.download("repos/" + file, file, function (err) {
 		executeCommands([
-			"cd " + __dirname + "/projects/HgToZip/repos/",
+			"cd " + __dirname + "/repos/",
 			"rm ./" + file
 		], function (err) {
 		});
