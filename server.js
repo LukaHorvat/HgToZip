@@ -86,7 +86,7 @@ app.get("/getzip/:name", function (req, res) {
 		return;
 	}
 	var file = req.params.name + ".zip";
-	res.download("repos/" + file, file, function (err) {
+	res.download(__dirname + "/repos/" + file, file, function (err) {
 		executeCommands([
 			"cd " + __dirname + "/repos/",
 			"rm ./" + file
