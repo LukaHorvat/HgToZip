@@ -94,6 +94,7 @@ app.get("/getzip/:name", function (req, res) {
 	});
 });
 
+console.log(__dirname);
 if (os.hostname() != "myfirefly.me") {
 	app.listen(1000);
 }
