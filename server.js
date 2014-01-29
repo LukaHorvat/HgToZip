@@ -98,6 +98,5 @@ app.get("/getzip/:name", function (req, res) {
 
 if (os.hostname() != "myfirefly.me") {
 	app.listen(1000);
-} else {
-	module.exports = app;
 }
+module.exports = app;
