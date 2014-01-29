@@ -71,7 +71,7 @@ app.post("/prepare/", function (req, res) {
 			res.end("error exec");
 			return;
 		}
-		res.end("/getzip/" + name);
+		res.end("getzip/" + name);
 	});
 });
 
