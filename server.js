@@ -63,8 +63,6 @@ app.post("/prepare/", function (req, res) {
 	}
 	name = "./" + name;
 	executeCommands([
-		"cd /projects/HgToZip/repos/",
-		"pwd",
 		"hg clone " + repo,
 		"zip -r " + name + ".zip " + name,
 		"rm -rf " + name
